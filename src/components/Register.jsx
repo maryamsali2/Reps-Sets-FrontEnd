@@ -16,10 +16,58 @@ const Register = () =>{
     const [formValues, setFormValues] = useState(initialState)
 
     // handle Change
+    const handleChange = (e) =>{
+        setFormValues({...formValues,[e.target.name]:e.target.value})
+    }
+
+    // handle Submit
+    const handleSubmit = async (e) =>{
+        e.preventDefault() 
+        await RegisterUser(formValues)
+        setFormValues(initialState)
+        // navigate('Login')
+    }
 
     return(
-        <>
-        </>
+        // username
+        <div className='Register-Start'>
+            <form onSubmit={handleSubmit}>
+            
+            <input type="text" 
+            name="username"
+             placeholder="Enter your username" 
+             value={formValues.user} 
+             onChange={handleChange} 
+             required
+              autoComplete="off"/>
+         
+
+
+         {/* password */}
+        <div className="inputting the password">
+            <input 
+            type="password" 
+            name="password"
+             placeholder="enter your password"
+              value={formValues.password}
+            onChange={handleChange}
+             required  
+            autoComplete="off"/> 
+
+             <button disabled={ !formValues.username || !formValues.password  }>
+  Register
+</button>
+
+
+
+
+        </div>
+
+        
+              </form>
+
+
+        </div>
     )
 }
 
