@@ -39,7 +39,7 @@ return(
                 <input 
                 name="username"
                 type="username"
-                placeholder="enter your user name"
+                placeholder="enter your username"
                 onChange={handleChange}
                 value={formValues.username}
                 required
@@ -58,10 +58,10 @@ return(
                 onChange={handleChange}
                 value={formValues.password}
                 required
-                autoComplete="off"
+                autoComplete="current-password"
                 />
             </div>
-            <button disabled={!formValues.username || !formValues.password }>
+            <button type="submit" disabled={!formValues.username || !formValues.password }>
             Login </button>
             
         </form>

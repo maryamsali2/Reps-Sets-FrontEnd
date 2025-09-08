@@ -25,7 +25,7 @@ const Register = () =>{
         e.preventDefault() 
         await RegisterUser(formValues)
         setFormValues(initialState)
-        // navigate('Login')
+         navigate('/Login')
     }
 
     return(
@@ -36,7 +36,7 @@ const Register = () =>{
             <input type="text" 
             name="username"
              placeholder="Enter your username" 
-             value={formValues.user} 
+             value={formValues.username} 
              onChange={handleChange} 
              required
               autoComplete="off"/>
@@ -44,7 +44,7 @@ const Register = () =>{
 
 
          {/* password */}
-        <div className="inputting the password">
+        <div className="form-password">
             <input 
             type="password" 
             name="password"
@@ -54,7 +54,7 @@ const Register = () =>{
              required  
             autoComplete="off"/> 
 
-             <button disabled={ !formValues.username || !formValues.password  }>
+             <button type="submit" disabled={ !formValues.username || !formValues.password  }>
   Register
 </button>
 

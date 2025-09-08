@@ -1,11 +1,14 @@
 import { Link } from "react-router-dom"
-import '../styles/Nav.css'
+
+
+
+
 const Nav = ({ user}) => {
   const userOptions = (
     <>
       <Link to="/home">Home</Link>
       
-      <Link to="/workoutForm"></Link>
+      <Link to="/workoutForm">New Workout</Link>
     </>
   )
 

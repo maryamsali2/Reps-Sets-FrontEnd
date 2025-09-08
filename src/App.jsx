@@ -1,5 +1,5 @@
 // imports
-import { useState} from "react"
+import { useEffect, useState} from "react"
 import {Route, Routes} from "react-router"
 
 
@@ -9,6 +9,25 @@ import Login from "./components/Login"
 
 
 
+import { CheckSession } from "./services/Auth"
+
+const App = () => {
+
+
+const [user, setUser] = useState(null)
+
+const CheckToken = async () => {
+    const userData = await CheckSession()
+    setUser(userData)
+}
+
+
+useEffect(() => {
+    const token = localStorage.getItem("token")
+    if (token) {
+        CheckToken()
+    }
+},[])
 
 
 
@@ -20,6 +39,7 @@ import Login from "./components/Login"
             <Routes>
                 <Route path="/register" element={<Register/>}/>
                 <Route path="/login" element={<Login setUser={setUser}/>}/>
+                <Route path="home" element={<Home/>}/>
 
             </Routes>
         </main>
@@ -33,7 +53,7 @@ import Login from "./components/Login"
 
 
 
-
+}
 
 
 
