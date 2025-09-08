@@ -1,7 +1,7 @@
 // 
 import Client from "./api";
 
-
+// auth
 export const RegisterUser = async(data) =>{
     try {
         const res = await Client.post("auth/register",data)
@@ -24,6 +24,17 @@ export const LoginUser = async(data) =>{
 export const CheckSession = async() => {
     try {
         const res = await Client.get("auth/session")
+    } catch (error) {
+        throw error
+    }
+}
+
+// workouts
+
+export const CreateWorkout = async (data) => {
+    try {
+        const res = await Client.post("/api/workouts",data)
+        return res.data
     } catch (error) {
         throw error
     }

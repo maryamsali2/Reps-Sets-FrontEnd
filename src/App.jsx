@@ -1,11 +1,12 @@
 // imports
 import { useEffect, useState} from "react"
-import {Route, Routes} from "react-router"
+import {Routes, Route} from "react-router"
 
 
 import Register from "./components/Register"
 import Login from "./components/Login"
-
+import Home from "./components/Home"
+import Nav from "./components/Nav"
 
 
 
@@ -15,6 +16,15 @@ const App = () => {
 
 
 const [user, setUser] = useState(null)
+
+ const [exercise, setExercise] = useState({
+        name:"",
+        weight:"",
+        sets:"",
+        reps:"",
+
+    })
+
 
 const CheckToken = async () => {
     const userData = await CheckSession()
@@ -33,13 +43,13 @@ useEffect(() => {
 
     return(
         <>
-        <h1>hrllo</h1>
+        <h1>hello</h1>
         <main>
             {/* <Nav user={user}/> */}
             <Routes>
                 <Route path="/register" element={<Register/>}/>
                 <Route path="/login" element={<Login setUser={setUser}/>}/>
-                <Route path="home" element={<Home/>}/>
+                <Route path="/" element={<Home/>}/>
 
             </Routes>
         </main>
