@@ -6,7 +6,7 @@ import {Routes, Route} from "react-router"
 import Register from "./components/Register"
 import Login from "./components/Login"
 import Home from "./components/Home"
-import Nav from "./components/Nav"
+import WorkoutForm from "./components/WorkoutForm"
 
 
 
@@ -49,7 +49,9 @@ useEffect(() => {
             <Routes>
                 <Route path="/register" element={<Register/>}/>
                 <Route path="/login" element={<Login setUser={setUser}/>}/>
-                <Route path="/" element={<Home/>}/>
+                <Route path="/home" element={<Home/>}/>
+                <Route path="/workoutForm" element={<WorkoutForm exercise={exercise} setExercise={setExercise} />} />
+
 
             </Routes>
         </main>
