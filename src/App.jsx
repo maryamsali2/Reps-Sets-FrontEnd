@@ -7,7 +7,7 @@ import Register from "./components/Register"
 import Login from "./components/Login"
 import Home from "./components/Home"
 import WorkoutForm from "./components/WorkoutForm"
-
+import WorkoutDetails from "./components/WorkoutDetails"
 
 
 import { CheckSession } from "./services/Auth"
@@ -51,6 +51,8 @@ useEffect(() => {
                 <Route path="/login" element={<Login setUser={setUser}/>}/>
                 <Route path="/home" element={<Home/>}/>
                 <Route path="/workoutForm" element={<WorkoutForm exercise={exercise} setExercise={setExercise} />} />
+                <Route path="/workout/:workoutId" element={<WorkoutDetails exercise={exercise} setExercise={setExercise} />} />
+         
 
 
             </Routes>

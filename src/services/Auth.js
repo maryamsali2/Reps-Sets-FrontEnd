@@ -74,7 +74,7 @@ export const UpdateExercise = async(workoutId,exerciseId,data) => {
 
 export const DeleteExercise = async (workoutId, exerciseId) => {
     try {
-        const res = await Client.delete(`/api/workouts/${workoutId}/exercise/${exerciseId}`,data)
+        const res = await Client.delete(`/api/workouts/${workoutId}/exercises/${exerciseId}`,data)
         return res.data
     } catch (error) {
         throw error
