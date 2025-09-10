@@ -1,13 +1,14 @@
 // imports
 import { useEffect, useState} from "react"
 import {Routes, Route} from "react-router"
-
+import { Navigate, Link } from "react-router"
 
 import Register from "./components/Register"
 import Login from "./components/Login"
 import Home from "./components/Home"
 import WorkoutForm from "./components/WorkoutForm"
 import WorkoutDetails from "./components/WorkoutDetails"
+import Nav from "./components/Nav"
 
 
 import { CheckSession } from "./services/Auth"
@@ -43,10 +44,11 @@ useEffect(() => {
 
     return(
         <>
-        <h1>hello</h1>
+        <Nav user={user } />
         <main>
-            {/* <Nav user={user}/> */}
+            
             <Routes>
+                <Route path="/" element={<Navigate to="/home" replace/>}/>
                 <Route path="/register" element={<Register/>}/>
                 <Route path="/login" element={<Login setUser={setUser}/>}/>
                 <Route path="/home" element={<Home/>}/>
@@ -56,6 +58,8 @@ useEffect(() => {
 
 
             </Routes>
+
+        
         </main>
         </>
 

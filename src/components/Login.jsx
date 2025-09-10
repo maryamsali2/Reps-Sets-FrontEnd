@@ -22,7 +22,7 @@ const Login = ({setUser}) =>{
         setFormValues(initialState)
         setUser(userData)
         if(userData){
-            navigate('/Home')
+            navigate('/WorkoutForm')
         }
     }
 

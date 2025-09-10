@@ -29,10 +29,11 @@ const Register = () =>{
     }
 
     return(
+        
         // username
         <div className='Register-Start'>
             <form onSubmit={handleSubmit}>
-            
+            <h1>Register</h1>
             <input type="text" 
             name="username"
              placeholder="Enter your username" 

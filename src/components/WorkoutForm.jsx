@@ -19,7 +19,7 @@ const [form, setForm] = useState(initialState)
 
 // handle change
 const handleChange = (e) => {
-    console.log(e)
+    const {name, value} = e.target
     setForm({...form,[e.target.name]: e.target.value})
 }
 
