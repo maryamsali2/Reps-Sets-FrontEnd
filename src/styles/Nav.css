@@ -1,0 +1,32 @@
+
+
+.navbar {
+  background-color: #1f1f1f;   
+  color: #fff;                 
+  display: flex;               
+  justify-content: space-between; 
+  align-items: center;         
+  padding: 20px 70px;
+}
+
+.navbar h3 {
+  margin: 0;
+  font-size: 1.1rem;
+  font-weight: 500;
+}
+
+.navbar nav {
+  display: flex;
+  gap: 16px; 
+}
+
+.navbar nav a {
+  color: #fff;
+  text-decoration: none;
+  font-size: 0.95rem;
+  transition: color 0.2s ease-in-out;
+}
+
+.navbar nav a:hover {
+  color: #4da6ff; 
+}

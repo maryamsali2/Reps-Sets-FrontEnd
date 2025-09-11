@@ -1,7 +1,7 @@
 import {useState} from "react"
 import { LoginUser } from "../services/Auth"
 import { useNavigate } from "react-router-dom"
-
+import "../styles/Login.css"
 
 const Login = ({setUser}) =>{
 

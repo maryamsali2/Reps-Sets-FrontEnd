@@ -1,6 +1,9 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import  {CreateWorkout} from "../services/Auth"
+import "../styles/WorkoutForm.css"
+
+
 
 const WorkoutForm = ({exercise, setExercise}) => {
 

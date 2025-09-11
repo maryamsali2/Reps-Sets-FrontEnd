@@ -20,7 +20,9 @@ const WorkoutDetails = ({exercise , setExercise }) => {
     },[])
 
 const [editingId, setEditingId] = useState(null)
-const [form, setForm] = useState({name:"",weight:"",sets:0,reps:0})
+const [form, setForm] = useState({name:"",weight:"0",sets:0,reps:0})
+
+
 
 const getId = (ex) => ex?._id ?? ex?.id
 const startEdit = (exercise) => {
@@ -54,7 +56,17 @@ const handleSave = async () => {
     try {
         const res = await Client.put(`/api/workouts/${workout._id}/exercises/${editingId}`,form
         )
-            setWorkout(res.data)
+        if(res?.data?.workout){
+          setWorkout(res.data.workout)
+        }else{
+          setWorkout(prev =>({
+            ...prev,
+            exercises: prev.exercises.map(ex => 
+              getId(ex) === editingId ? {...ex,...form} :ex
+            )
+          }))
+        }
+           
             setEditingId(null)
         
     } catch (error) {
@@ -73,9 +85,16 @@ const handleDelete = async (exId) => {
             `/api/workouts/${workout._id}/exercises/${exId}`
             
         )
-        setWorkout(res.data)
+        if(res?.data?.workout){
+          setWorkout(res.data.workout)
+        }else{
+          setWorkout(prev => ({
+            ...prev,
+            exercises: prev.exercises.filter(ex => getId(ex) !== exId)
+          }))
+        }
     } catch (error) {
-        throw error
+        console.error("failed to delete exercise")
     }
 }
 
@@ -90,7 +109,7 @@ return(
     </div>
 
     <div className="workout-exercises-summary">
-      {workout && workout.exercises.map((exercise) => {
+      {workout?.exercises?.map((exercise) => {
         return (
           <div key={getId(exercise)} className="exercise-summary-item">
             <h2 className="exercise-name">{exercise.name}</h2>
@@ -110,24 +129,26 @@ return(
             <li key={exId} className="exercise-list-item-edit">
               <input className="edit-input"
                name="name" 
-               value={form.name} 
+               
+               value={form.name || ""} 
                onChange={handleChange} 
                />
               <input className="edit-input"
                name="weight"
-                value={form.weight} 
+               type="number"
+                value={form.weight ??0} 
                 onChange={handleChange}
                  />
               <input className="edit-input"
-               type="number"
                name="sets" 
-               value={form.sets} 
+               type="number"
+               value={form.sets ?? 0} 
                onChange={handleChange}
                />
               <input className="edit-input"
                type="number" 
                name="reps"
-                value={form.reps} 
+                value={form.reps ?? 0} 
                 onChange={handleChange} />
 
               <button className="save-button" onClick={handleSave}>Save</button>
