@@ -1,0 +1,196 @@
+
+.workout-details-page {
+  min-height: 100vh;
+  padding: 32px 20px;
+  background: linear-gradient(135deg, #111, #222);
+  color: #fff;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  box-sizing: border-box;
+}
+
+
+.page-title {
+  font-size: 24px;
+  font-weight: 800;
+  text-transform: uppercase;
+  color: #e63946;
+  margin: 0 0 20px;
+  letter-spacing: 1px;
+}
+
+
+.workout-info-section {
+  background: #1c1c1c;
+  border-radius: 12px;
+  box-shadow: 0 8px 24px rgba(0,0,0,0.5);
+  padding: 18px 20px;
+  width: 100%;
+  max-width: 860px;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+  gap: 12px;
+  margin-bottom: 18px;
+}
+
+.workout-name,
+.workout-day,
+.workout-date {
+  margin: 0;
+  font-size: 16px;
+  color: #ddd;
+}
+
+
+.workout-exercises-summary {
+  width: 100%;
+  max-width: 860px;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 12px;
+  margin-bottom: 12px;
+}
+
+.exercise-summary-item {
+  background: #181818;
+  border-radius: 10px;
+  padding: 12px 14px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.4);
+}
+
+.exercise-name {
+  margin: 0 0 6px;
+  font-size: 15px;
+  color: #fff;
+}
+
+.exercise-weight {
+  margin: 0;
+  font-size: 14px;
+  color: #bbb;
+}
+
+
+.no-exercises-message {
+  width: 100%;
+  max-width: 860px;
+  background: #1a1a1a;
+  border: 1px dashed #444;
+  color: #bbb;
+  border-radius: 10px;
+  padding: 14px;
+  text-align: center;
+  margin: 10px 0 18px;
+}
+
+
+.exercises-list {
+  width: 100%;
+  max-width: 860px;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+
+.exercise-list-item {
+  background: #1c1c1c;
+  border-radius: 12px;
+  padding: 14px 16px;
+  box-shadow: 0 8px 24px rgba(0,0,0,0.5);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.exercise-details {
+  font-size: 15px;
+  color: #eaeaea;
+}
+
+
+.button-group {
+  display: flex;
+  gap: 8px;
+}
+
+.edit-button,
+.delete-button,
+.save-button,
+.cancel-button {
+  border: none;
+  border-radius: 8px;
+  padding: 10px 14px;
+  font-size: 14px;
+  font-weight: 700;
+  cursor: pointer;
+  transition: transform 0.2s ease, opacity 0.2s ease, background 0.2s ease;
+}
+
+.edit-button {
+  background: #ffaa00;   
+  color: #111;
+}
+.edit-button:hover { transform: translateY(-1px); opacity: 0.95; }
+
+.delete-button {
+  background: #e63946;  
+  color: #fff;
+}
+.delete-button:hover { transform: translateY(-1px); opacity: 0.95; }
+
+
+.exercise-list-item-edit {
+  background: #1c1c1c;
+  border-radius: 12px;
+  padding: 16px;
+  box-shadow: 0 8px 24px rgba(0,0,0,0.5);
+  display: grid;
+  grid-template-columns: 1fr 0.8fr 0.8fr 0.8fr auto;
+  gap: 10px;
+  align-items: center;
+}
+
+
+.edit-input {
+  width: 100%;
+  padding: 10px 12px;
+  border: none;
+  border-radius: 8px;
+  outline: none;
+  background: #262626;
+  color: #f2f2f2;
+  font-size: 14px;
+}
+
+.save-button {
+  background: #28a745;   
+  color: #fff;
+}
+.save-button:hover { transform: translateY(-1px); opacity: 0.95; }
+
+.cancel-button {
+  background: #444;
+  color: #eee;
+  margin-left: 6px;
+}
+.cancel-button:hover { transform: translateY(-1px); opacity: 0.95; }
+
+
+@media (max-width: 640px) {
+  .exercise-list-item {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 10px;
+  }
+  .exercise-list-item-edit {
+    grid-template-columns: 1fr;
+  }
+  .button-group {
+    align-self: flex-end;
+  }
+}

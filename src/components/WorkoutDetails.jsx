@@ -1,7 +1,8 @@
+
 import {useState, useEffect} from "react"
 import {useParams} from "react-router-dom"
 import Client from "../services/api"
-
+import "../styles/WorkoutDetails.css"
 
 const WorkoutDetails = ({exercise , setExercise }) => {
     const [workout, setWorkout] = useState(null)
@@ -21,18 +22,26 @@ const WorkoutDetails = ({exercise , setExercise }) => {
 
 const [editingId, setEditingId] = useState(null)
 const [form, setForm] = useState({name:"",weight:"0",sets:0,reps:0})
+const readSR = (ex) => {
+    return {
+      sets: ex?.SetsAndReps?.[0]?.sets ?? 0,
+      reps: ex?.SetsAndReps?.[0]?.reps ?? 0
+    }
+  }
+
 
 
 
 const getId = (ex) => ex?._id ?? ex?.id
 const startEdit = (exercise) => {
-    setEditingId(getId(exercise))
-    setForm({
-        name: exercise.name,
-        weight: exercise.weight,
-        sets: exercise.sets,
-        reps: exercise.reps,
-    })
+  const { sets, reps } = readSR(exercise)
+  setEditingId(getId(exercise))
+  setForm({
+    name: exercise.name || "",
+    weight: exercise.weight || 0,
+    sets,
+    reps
+  })
 }
 
 
@@ -41,38 +50,69 @@ const startEdit = (exercise) => {
 const handleChange = (e)  => {
   
     const {name , value} = e.target
-    if(name==="weight"||name === "sets" || name==="reps"){
-        setForm((prev) => ({...prev,[name]:Number(value)}))
-    }else {
-        setForm((prev) => ({...prev, [name]:value}))
+    if(name === "weight" || name==="sets" || name==="reps"){
+      setForm((prev)=>({
+        ...prev,
+        [name]:value === "" ? "":Number(value)
+      }))
+    }else{
+      setForm((prev) => ({
+        ...prev,
+        [name]:value
+      }))
     }
-    
 }
 
 // handle save
+
 const handleSave = async () => {
-    if(!workout || !editingId) 
-        return
-    try {
-        const res = await Client.put(`/api/workouts/${workout._id}/exercises/${editingId}`,form
-        )
-        if(res?.data?.workout){
-          setWorkout(res.data.workout)
-        }else{
-          setWorkout(prev =>({
-            ...prev,
-            exercises: prev.exercises.map(ex => 
-              getId(ex) === editingId ? {...ex,...form} :ex
-            )
-          }))
-        }
-           
-            setEditingId(null)
+  if (!workout || !editingId) return
+
+  
+  const updatedExercises = workout.exercises.map((ex) => {
+    if (getId(ex) === editingId) {
+      return {
+        ...ex,
+        name: form.name,
+        weight: form.weight,
         
-    } catch (error) {
-        console.error("failed to save the changes", error)
+        SetsAndReps: [{ sets: form.sets, reps: form.reps }]
+      }
     }
+    return ex
+  })
+
+  setWorkout((prev) => ({
+    ...prev,
+    exercises: updatedExercises
+  }))
+
+  try {
+    
+    const payload = {
+      name: form.name,
+      weight: form.weight,
+      SetsAndReps: [{ sets: form.sets, reps: form.reps }]
+    }
+
+    const res = await Client.put(
+      `/api/workouts/${workout._id}/exercises/${editingId}`,
+      payload
+    )
+
+    
+    const savedWorkout = res?.data?.workout || res?.data
+    if (savedWorkout?.exercises) {
+      setWorkout(savedWorkout)
+    }
+  } catch (error) {
+    console.error("failed to save the changes", error)
+    
+  } finally {
+    setEditingId(null)
+  }
 }
+
 
 
 
@@ -158,7 +198,11 @@ return(
         } else {
           return (
             <li key={exId} className="exercise-list-item">
-              <span className="exercise-details">{exercise.name} - {exercise.weight} - {exercise.sets} sets × {exercise.reps} reps</span>
+              <span className="exercise-details">
+                {exercise.name} - {exercise.weight} - 
+              {(exercise.SetsAndReps?.[0]?.sets ?? 0)} sets × {(exercise.SetsAndReps?.[0]?.reps ?? 0)} reps
+                </span>
+
               <div className="button-group">
                 <button className="edit-button" onClick={() => startEdit({ ...exercise, id: exId })}>Edit</button>
                 <button className="delete-button" onClick={() => handleDelete(exId)}>
@@ -180,4 +224,4 @@ return(
 }
 
 
-export default WorkoutDetails 
+export default WorkoutDetails

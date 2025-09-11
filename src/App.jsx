@@ -15,12 +15,14 @@ import Nav from "./components/Nav"
 
 
 
+
 // css 
 import'./styles/Nav.css'
 import './styles/Home.css'
 import './styles/Register.css'
 import './styles/Login.css'
 import './styles/WorkoutForm.css'
+import './styles/WorkoutDetails.css'
 
 
 

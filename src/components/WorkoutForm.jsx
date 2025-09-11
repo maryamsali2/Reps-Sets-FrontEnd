@@ -32,10 +32,16 @@ const handleExrChange = (e) => {
 
 // hand add exercise
 
-const handleAddExr = () =>{
-    setForm({...form,exercises:[...form.exercises, exercise]})
-    setExercise({name:"",weight:"",sets:"",reps:""})
+const handleAddExr = () => {
+  const ex = {
+    name: exercise.name,
+    weight: Number(exercise.weight) || 0,
+    SetsAndReps: [{ sets: Number(exercise.sets) || 0, reps: Number(exercise.reps) || 0 }]
+  }
+  setForm({ ...form, exercises: [...form.exercises, ex] })
+  setExercise({ name:"", weight:"", sets:"", reps:"" })
 }
+
 
 // handle submit
 const handleSubmit = async(e) => {

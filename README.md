@@ -1,10 +1,10 @@
 # Reps&Sets
 
-## Date: 1/26/2021
+## Date: Sept2025
 
 ### By: Maryam Salah
 
-#### [Website](https://michaellackey.com/) | [GitHub](https://github.com/NobodysLackey) | [LinkedIn](https://www.linkedin.com/in/michaelglackey/)
+#### 📫email: maryamsalah233@gmail.com 
 ***
 
 ### ***Description***
@@ -30,26 +30,24 @@
 
 ### ***Screenshots***
 
-##### image header 1
-![Smile](https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Ftse2.mm.bing.net%2Fth%3Fid%3DOIP.PDlm3trgAkY6pGPcbRt4SQHaEK%26pid%3DApi&f=1)
+##### ERD
+![ERD](https://fv5-3.files.fm/thumb_show.php?i=sm5tety9rc&view&v=1&PHPSESSID=e53f928d0f5146fdce6c4518565c8e3a4c9cdb12)
 
-##### image header 2
-![Scared](https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Ftse2.mm.bing.net%2Fth%3Fid%3DOIP.buntINTHFLyDODyMKXNYcgHaEK%26pid%3DApi&f=1)
+##### Component Tree
+![Scared](https://fv5-5.files.fm/thumb_show.php?i=92vghqsk3d&view&v=1&PHPSESSID=e53f928d0f5146fdce6c4518565c8e3a4c9cdb12)
+
+
+##### how my application looks like
+![Scared](https://fv5-6.files.fm/thumb_show.php?i=tyjzkq9zsh&view&v=1&PHPSESSID=e53f928d0f5146fdce6c4518565c8e3a4c9cdb12)
+![exercise](https://fv5-6.files.fm/thumb_show.php?i=bpgnd3f58q&view&v=1&PHPSESSID=e53f928d0f5146fdce6c4518565c8e3a4c9cdb12)
+
 ***
 
 ### ***Future Updates***
 
-- [ ] Future Update 1
-- [ ] Future Update 2
-- [x] Completed Update
-- [x] ~~Strikethrough~~ Items Also
-***
+- [ ]viewing all the workout 
+- [ ] add a monthly partnership
+- [ ] profile
+- [ ] contact email
 
-### ***Credits***
 
-##### Funny Images: [DuckDuckGo Search](http://www.duckduckgo.com)
-
-##### Markdown Guide: [ia.net](https://ia.net/writer/support/general/markdown-guide)
-
-##### Markdown Cheatsheet: [GitHub](https://guides.github.com/pdfs/markdown-cheatsheet-online.pdf)
-***
